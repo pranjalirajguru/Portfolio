@@ -2,7 +2,16 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  caret-color: transparent !important;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+* {
+  box-sizing: border-box;
 }
 
 
@@ -17,6 +26,7 @@ body {
   color: #f5eaff;
   line-height: 1.8;
 }
+
 
 /* TOP SECTION (Always visible) */
 .top-section {
@@ -131,6 +141,20 @@ body {
   overflow: visible;
   pointer-events: auto;
 }
+.page-section {
+  display: none;
+  opacity: 0;
+  height: 0;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.page-section.active {
+  display: block;
+  opacity: 1;
+  height: auto;
+}
+
 
 
 /* ABOUT */
@@ -182,6 +206,16 @@ body {
   padding-left: 0;
 }
 
+.education a {
+    color: #8f216f;
+    background-color: #ffffff;
+    padding: 3px 15px 3px 15px;
+    border-radius: 10px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
 .education li {
   font-family: 'Inter', sans-serif;
   font-size: 1rem;
@@ -198,7 +232,7 @@ body {
   margin-right: 60px;
   border: 3px solid #bb86fc;
   align-self: flex-start;
-  transform: translateY(-20px);
+
 }
 
 /* === SOFT SKILLS SECTION === */
@@ -503,6 +537,73 @@ body {
   }
 }
 
+.contact-section {
+  padding: 60px 20px;
+  background: linear-gradient(145deg, #1e0c47, #241b63);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
+.contact-form {
+  background: #2d2258;
+  padding: 40px;
+  border-radius: 15px;
+  max-width: 500px;
+  width: 100%;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+  color: #ffffff;
+  font-family: 'Segoe UI', sans-serif;
+  justify-self: center;
+}
 
+.contact-form h2 {
+  margin-bottom: 20px;
+  color: #bb86fc;
+  text-align: center;
+  font-size: 24px;
+}
 
+.contact-form label {
+  display: block;
+  margin-top: 15px;
+  margin-bottom: 5px;
+  font-weight: 500;
+}
+
+.contact-form input,
+.contact-form textarea {
+  width: 100%;
+  padding: 12px;
+  border-radius: 8px;
+  border: none;
+  background: #3b2c70;
+  color: #fff;
+  font-size: 14px;
+  resize: none;
+  transition: 0.3s ease;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+  outline: none;
+  background: #49388a;
+}
+
+.contact-form button {
+  margin-top: 20px;
+  width: 100%;
+  padding: 12px;
+  background: #bb86fc;
+  color: #1e0c47;
+  border: none;
+  border-radius: 8px;
+  font-weight: bold;
+  font-size: 16px;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.contact-form button:hover {
+  background: #a667e2;
+}
