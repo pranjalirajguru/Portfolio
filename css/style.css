@@ -5,10 +5,6 @@
   caret-color: transparent !important;
 }
 
-html, body {
-  overflow: hidden;
-  min-height: 100vh;
-}
 
 body {
   font-family: 'Playfair Display', serif;
@@ -59,6 +55,7 @@ body {
 
 .intro-text {
   position: absolute;
+      margin: 60px 0;
   top: -30%;
   left: 48%;
   transform: translateX(-50%);
@@ -139,12 +136,13 @@ body {
 /* ABOUT */
 .about {
   display: flex;
+  width: 100%;
   justify-content: space-between;
   align-items: center;
   padding: 20px 60px 40px 90px;
   margin-top: 40px;
   padding-left: 90px;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   gap: 30px;
 }
 
@@ -156,6 +154,7 @@ body {
 
 .about-text h2 {
   font-size: 2rem;
+  margin-top: 50px;
   margin-bottom: 10px;
   color: #ffd6f3;
 }
