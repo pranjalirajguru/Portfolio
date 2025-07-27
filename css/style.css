@@ -237,7 +237,7 @@ body {
 }
 
 .about-img img {
-  width: 390px;
+  width: 400px;
   max-width: 100%;
   height: auto;
   border-radius: 10px;
@@ -529,7 +529,7 @@ body {
 }
 
 .cert-card {
-  width: 340px;
+  width: 300px;
   height: 220px;
   border-radius: 22px;
   overflow: hidden;
@@ -651,4 +651,61 @@ body {
 
 * {
   caret-color: transparent;
+}
+
+.cert-slider-wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 1140px;
+  margin: 0 auto;
+  overflow: hidden;
+}
+
+.cert-slider {
+  display: flex;
+  gap: 40px;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  padding: 10px 20px;
+}
+
+.cert-slider::-webkit-scrollbar {
+  display: none;
+}
+
+.cert-scroll-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(255, 255, 255, 0.1);
+  border: none;
+  font-size: 2rem;
+  color: #ffd6f3;
+  cursor: pointer;
+  padding: 10px;
+  z-index: 10;
+  border-radius: 50%;
+  transition: background-color 0.3s ease;
+}
+
+.cert-scroll-btn:hover {
+  background-color: rgba(255, 255, 255, 0.3);
+}
+
+.cert-scroll-btn.left {
+  left: -10px;
+}
+
+.cert-scroll-btn.right {
+  right: -10px;
+}
+
+.cert-card {
+  flex: 0 0 340px; /* Ensure exactly 3 fit in ~1020px width */
+  height: 220px;
+  border-radius: 22px;
+  overflow: hidden;
+  box-shadow: 0 10px 25px rgba(255, 255, 255, 0.08);
+  background: white;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
