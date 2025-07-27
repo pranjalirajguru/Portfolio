@@ -126,19 +126,29 @@
     </div>
 
   </div>
-</section>
+</section>    
 
   </section>
   <!-- ✅ Courses & Certification (Fixed) -->
 <section id="certs" class="page-section certifications-section">
   <h2 class="section-title">Courses & Certifications</h2>
-  <div class="certification-grid">
+  <div class="cert-slider-wrapper">
+  <button class="cert-scroll-btn left" onclick="scrollCerts(-1)">&#10094;</button>
+
+  <div class="cert-slider" id="certSlider">
     <div class="cert-card"><img src="images/accenture.png" alt="Accenture Certificate"></div>
     <div class="cert-card"><img src="images/python.jpeg" alt="Python Certificate"></div>
     <div class="cert-card"><img src="images/microsoft.jpeg" alt="Microsoft Certificate"></div>
     <div class="cert-card"><img src="images/deloitte.jpeg" alt="Deloitte Certificate"></div>
     <div class="cert-card"><img src="images/forage.jpeg" alt="Forage Certificate"></div>
+    <div class="cert-card"><img src="images/ai.jpg" alt="ai Certificate"></div>
+    <div class="cert-card"><img src="images/datascientist.jpg" alt="ds Certificate"></div>
+    <div class="cert-card"><img src="images/reactjs.jpg" alt="react Certificate"></div>
   </div>
+
+  <button class="cert-scroll-btn right" onclick="scrollCerts(1)">&#10095;</button>
+</div>
+
 </section>
 
   <!-- ✅ Contact Section -->
@@ -163,6 +173,17 @@
 
 
   <!-- ✅ JavaScript -->
+   <script>
+  function scrollCerts(direction) {
+    const container = document.getElementById('certSlider');
+    const cardWidth = container.querySelector('.cert-card').offsetWidth + 40; // 40px = gap
+    container.scrollBy({
+      left: direction * cardWidth,
+      behavior: 'smooth'
+    });
+  }
+</script>
+
   <script src="js/script.js"></script>
 </body>
 </html>
