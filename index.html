@@ -244,11 +244,23 @@
       behavior: 'smooth'
     });
   }
+       // ✅ Smooth scroll function
+const container = document.getElementById("projectsContainer");
+const scrollAmount = 280; // adjust per card width
+
+document.querySelector(".slider-btn.left").addEventListener("click", () => {
+  container.scrollBy({ left: -scrollAmount, behavior: "smooth" });
+});
+
+document.querySelector(".slider-btn.right").addEventListener("click", () => {
+  container.scrollBy({ left: scrollAmount, behavior: "smooth" });
+});
 </script>
 
   <script src="js/script.js"></script>
 </body>
 </html>
+
 
 
 
