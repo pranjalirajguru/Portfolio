@@ -368,15 +368,18 @@ body {
     transform: scale(1);
   }
 }
-
+.projects-container {
+  padding: 0 60px; /* ✅ only projects area has side padding */
+}
 
 .projects-cards {
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   flex-wrap: nowrap;
   gap: 20px;
   overflow-x: auto;
   padding: 10px 0;
+  scroll-snap-type: x mandatory; /* 👈 snap scrolling */
 }
 
 .projects-cards::-webkit-scrollbar {
@@ -388,7 +391,7 @@ body {
 }
 
 .project-card {
-  flex: 0 0 250px;
+  flex: 0 0 calc(25% - 20px); /* 👈 exactly 4 cards visible */
   height: 200px; /* 🔽 reduced from 250px */
   background-color: rgba(255, 255, 255, 0.05);
   border: 1px solid #bb86fc;
@@ -402,6 +405,7 @@ body {
   box-sizing: border-box;
   text-align: left;
   transition: transform 0.3s ease;
+  scroll-snap-align: start; /* 👈 align cards while scrolling */
 }
 
 .project-card:hover {
@@ -439,6 +443,40 @@ body::-webkit-scrollbar {
 body {
   -ms-overflow-style: none;
   scrollbar-width: none;
+}
+
+/* ✅ Slider wrapper */
+.projects-slider {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.slider-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(187, 134, 252, 0.2);
+  border: none;
+  color: #ffd6f3;
+  font-size: 1.8rem;
+  padding: 6px 10px;
+  border-radius: 50%;
+  cursor: pointer;
+  z-index: 10;
+  transition: background 0.3s;
+}
+
+.slider-btn:hover {
+  background: rgba(187, 134, 252, 0.4);
+}
+
+.slider-btn.left {
+  left: -2%;
+}
+
+.slider-btn.right {
+  right: -2%;
 }
 
 .certifications-section {
@@ -709,3 +747,4 @@ body {
   background: white;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
+
