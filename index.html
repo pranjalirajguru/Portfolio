@@ -4,284 +4,632 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Pranjali Rajguru | Portfolio</title>
-  <link rel="stylesheet" href="css/style.css">
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Inter:wght@300;400&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Playfair Display', serif;
+      background:
+        radial-gradient(circle at top left, rgba(255, 105, 180, 0.12) 0%, transparent 100%),
+        linear-gradient(135deg, #0d001a, #1a0033, #003366);
+      background-attachment: fixed;
+      background-repeat: no-repeat;
+      background-size: cover;
+      color: #f5eaff;
+      line-height: 1.8;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+    }
+    body::-webkit-scrollbar { display: none; }
+
+    /* ── NAV ── */
+    header {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      height: 70px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 40px;
+      z-index: 1000;
+      background: rgba(13, 0, 26, 0.6);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(187, 134, 252, 0.15);
+      transition: background 0.3s;
+    }
+
+    .logo {
+      font-size: 1.3rem;
+      color: #ffd6f3;
+      letter-spacing: 0.05em;
+    }
+
+    nav a {
+      margin-left: 28px;
+      text-decoration: none;
+      color: #c9b8ff;
+      font-weight: 400;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.92rem;
+      transition: color 0.3s;
+    }
+    nav a:hover { color: #ffb3dd; }
+
+    /* ── SOCIAL ── */
+    .social-icons {
+      position: fixed;
+      top: 50%;
+      left: 20px;
+      transform: translateY(-50%);
+      display: flex;
+      flex-direction: column;
+      gap: 28px;
+      z-index: 999;
+    }
+    .social-icons a { color: #e0cfff; font-size: 1.2rem; transition: color 0.3s; }
+    .social-icons a:hover { color: #ffb3dd; }
+
+    /* ── SECTIONS ── */
+    section {
+      min-height: 100vh;
+      padding: 100px 90px 80px;
+    }
+
+    /* ── ABOUT ── */
+    #about {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 60px;
+      flex-wrap: wrap;
+    }
+
+    .about-left { flex: 1 1 400px; max-width: 600px; }
+
+    .hero-tag {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.85rem;
+      color: #bb86fc;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+
+    .about-left h1 {
+      font-size: 3.2rem;
+      color: #ffd6f3;
+      line-height: 1.2;
+      margin-bottom: 8px;
+    }
+
+    .about-left h2 {
+      font-size: 1.15rem;
+      color: #d6cfff;
+      font-weight: 300;
+      margin-bottom: 28px;
+    }
+
+    .about-left p {
+      font-family: 'Inter', sans-serif;
+      color: #e5d4ff;
+      font-size: 1rem;
+      margin-bottom: 28px;
+      line-height: 1.8;
+    }
+
+    .education h3 {
+      font-size: 1.5rem;
+      color: #ffd6f3;
+      margin-bottom: 10px;
+    }
+
+    .education ul { list-style: none; padding: 0; margin-bottom: 18px; }
+    .education li {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.95rem;
+      color: #e5d4ff;
+      margin-bottom: 4px;
+    }
+
+    .resume-btn {
+      display: inline-block;
+      background: #fff;
+      color: #8f216f;
+      padding: 6px 18px;
+      border-radius: 10px;
+      text-decoration: none;
+      font-weight: bold;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.9rem;
+      transition: transform 0.2s;
+    }
+    .resume-btn:hover { transform: translateY(-2px); }
+
+    .about-img img {
+      width: 360px;
+      max-width: 100%;
+      border-radius: 14px;
+      border: 3px solid #bb86fc;
+    }
+
+    /* ── PROJECTS ── */
+    #projects { padding-top: 100px; }
+
+    .section-heading {
+      font-size: 2rem;
+      color: #ffd6f3;
+      margin-bottom: 40px;
+      font-family: 'Playfair Display', serif;
+    }
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 28px;
+    }
+
+    .project-card {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(187, 134, 252, 0.35);
+      border-radius: 16px;
+      padding: 26px 24px 22px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s;
+    }
+    .project-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 12px 30px rgba(187, 134, 252, 0.15);
+      border-color: rgba(187, 134, 252, 0.6);
+    }
+
+    .project-card h4 {
+      font-size: 1.15rem;
+      color: #ffd6f3;
+    }
+
+    .project-card p {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.92rem;
+      color: #d6cfff;
+      line-height: 1.65;
+      flex-grow: 1;
+    }
+
+    .tech-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 7px;
+      margin-top: 4px;
+    }
+
+    .tag {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.75rem;
+      padding: 3px 10px;
+      border-radius: 20px;
+      background: rgba(187, 134, 252, 0.15);
+      border: 1px solid rgba(187, 134, 252, 0.4);
+      color: #d6cfff;
+    }
+
+    .project-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      margin-top: 6px;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.88rem;
+      font-weight: 500;
+      color: #ffd6f3;
+      text-decoration: none;
+      border: 1px solid rgba(255, 214, 243, 0.35);
+      border-radius: 8px;
+      padding: 6px 14px;
+      width: fit-content;
+      transition: background 0.2s, border-color 0.2s;
+    }
+    .project-link:hover {
+      background: rgba(255, 214, 243, 0.1);
+      border-color: #ffd6f3;
+    }
+
+    /* ── CERTS ── */
+    #certs {
+      padding-top: 100px;
+      min-height: auto;
+    }
+
+    .cert-slider-wrapper {
+      position: relative;
+      max-width: 1100px;
+      overflow: hidden;
+      margin: 0 auto;
+    }
+
+    .cert-slider {
+      display: flex;
+      gap: 36px;
+      overflow-x: auto;
+      scroll-behavior: smooth;
+      padding: 10px 20px;
+      scrollbar-width: none;
+    }
+    .cert-slider::-webkit-scrollbar { display: none; }
+
+    .cert-card {
+      flex: 0 0 300px;
+      height: 210px;
+      border-radius: 18px;
+      overflow: hidden;
+      background: white;
+      transition: transform 0.3s, box-shadow 0.3s;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.2);
+    }
+    .cert-card:hover {
+      transform: scale(1.04);
+      box-shadow: 0 14px 36px rgba(255,255,255,0.12);
+    }
+    .cert-card img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+    .cert-scroll-btn {
+      position: absolute;
+      top: 50%; transform: translateY(-50%);
+      background: rgba(255,255,255,0.1);
+      border: none;
+      font-size: 1.8rem;
+      color: #ffd6f3;
+      cursor: pointer;
+      padding: 8px 12px;
+      border-radius: 50%;
+      z-index: 10;
+      transition: background 0.3s;
+    }
+    .cert-scroll-btn:hover { background: rgba(255,255,255,0.25); }
+    .cert-scroll-btn.left { left: -8px; }
+    .cert-scroll-btn.right { right: -8px; }
+
+    /* ── CONTACT ── */
+    #contact {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+    .contact-form {
+      background: rgba(45, 34, 88, 0.85);
+      padding: 44px;
+      border-radius: 18px;
+      max-width: 500px;
+      width: 100%;
+      border: 1px solid rgba(187, 134, 252, 0.3);
+    }
+
+    .contact-form h2 {
+      margin-bottom: 24px;
+      color: #bb86fc;
+      text-align: center;
+      font-size: 1.6rem;
+    }
+
+    .contact-form label {
+      display: block;
+      margin-top: 14px;
+      margin-bottom: 5px;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.9rem;
+      color: #d6cfff;
+    }
+
+    .contact-form input,
+    .contact-form textarea {
+      width: 100%;
+      padding: 12px;
+      border-radius: 9px;
+      border: 1px solid rgba(187, 134, 252, 0.3);
+      background: rgba(59, 44, 112, 0.7);
+      color: #fff;
+      font-size: 0.95rem;
+      font-family: 'Inter', sans-serif;
+      resize: none;
+      transition: border 0.3s;
+    }
+    .contact-form input:focus,
+    .contact-form textarea:focus {
+      outline: none;
+      border-color: #bb86fc;
+    }
+
+    .contact-form button {
+      margin-top: 22px;
+      width: 100%;
+      padding: 13px;
+      background: #bb86fc;
+      color: #1e0c47;
+      border: none;
+      border-radius: 9px;
+      font-weight: bold;
+      font-size: 1rem;
+      cursor: pointer;
+      font-family: 'Inter', sans-serif;
+      transition: background 0.3s;
+    }
+    .contact-form button:hover { background: #a667e2; }
+
+    * { caret-color: transparent; }
+    .contact-form input, .contact-form textarea { caret-color: #bb86fc; }
+
+    /* ── FOOTER ── */
+    footer {
+      text-align: center;
+      padding: 30px;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.85rem;
+      color: rgba(197, 167, 255, 0.5);
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 768px) {
+      section { padding: 100px 24px 60px; }
+      #about { flex-direction: column-reverse; text-align: center; }
+      .about-left h1 { font-size: 2.2rem; }
+      .social-icons { display: none; }
+      nav a { margin-left: 14px; font-size: 0.8rem; }
+      .projects-grid { grid-template-columns: 1fr; }
+    }
+  </style>
 </head>
 <body>
-<header class="top-section">
-      <div class="top-left">Portfolio</div>
-     <nav class="top-nav">
-        <a href="#" data-target="about">About</a>
-        <a href="#" data-target="projects">Projects</a>
-        <a href="#" data-target="certs">Courses & Certification</a>
-        <a href="#" data-target="contact">Contact</a>
-      </nav>
 
-    </header>
+<header>
+  <div class="logo">Portfolio</div>
+  <nav>
+    <a href="#about">About</a>
+    <a href="#projects">Projects</a>
+    <a href="#certs">Certifications</a>
+    <a href="#contact">Contact</a>
+  </nav>
+</header>
 
-  <!-- ✅ Fixed Social Icons -->
-  <div class="social-icons">
-    <a href="https://linkedin.com/in/pranjali-19-rajguru" target="_blank"><i class="fab fa-linkedin"></i></a>
-    <a href="https://github.com/pranjalirajguru" target="_blank"><i class="fab fa-github"></i></a>
-    <a href="mailto:pranjalirajguru2003@gmail.com" target="_blank"><i class="fas fa-envelope"></i></a>
-    <a href="https://x.com/Pranjali192003" target="_blank"><i class="fab fa-x-twitter"></i></a>
-  </div>
-
-  <!-- ✅ About Page (Main Page) -->
-  <section id="about" class="page-section active">
-    <div class="about">
-      <div class="intro-text">
-      <h1 id="main-name">Pranjali Rajguru</h1>
-      <h2>Student & Web Developer</h2>
-    </div>
-      <div class="about-left">
-        <div class="about-text">
-          <h2>About Me</h2>
-          <p>I am a computer science student passionate about building web applications that are both aesthetic and functional.
-            With experience in frontend technologies like HTML, CSS, and JavaScript.
-            Currently exploring backend and full-stack development while building real-world projects.
-            Enthusiastic learner, always curious about new tech and tools in the development world.</p>
-        </div>
-        <div class="education">
-          <h3>Education</h3>
-          <ul>
-            <li>-BSc (ECS), Sangola College, Sangola</li>
-            <li>Punyashlok Ahilyadevi Holkar Solapur University (2023–2026)</li>
-            <li>-HSC</li>
-            <li>Sangola Vidyamandir Jr. College, Sangola (2020-2021)</li>
-          </ul>
-          <a href="images/Resume.pdf" download="" title="Download Resume">⇩ Download Resume</a>
-        </div>
-      </div>
-      <div class="about-img">
-        <img src="images/pranjali.png" alt="Pranjali" />
-      </div>
-    </div>
-  </section>
-
-<!-- ✅ Projects Page Section -->
-<section id="projects" class="page-section">
-  <div class="projects-section">
-
-    <!-- ✅ Soft Skills -->
-    <div class="soft-skills-section">
-      <h3 class="section-heading">Soft Skills</h3>
-      <div class="skills-cards">
-        <div class="skill-card"><h4>Communication</h4></div>
-        <div class="skill-card"><h4>Problem-Solving</h4></div>
-        <div class="skill-card"><h4>Teamwork</h4></div>
-        <div class="skill-card"><h4>Time Management</h4></div>
-        <div class="skill-card"><h4>Adaptability</h4></div>
-        <div class="skill-card"><h4>Attention to Detail</h4></div>
-      </div>
-    </div>
-
-    <!-- ✅ Technical Skills -->
-    <div class="skills-section">
-  <h3 class="section-heading">Technical Skills</h3>
-  <div class="skills-cards">
-    <div class="skill-card">
-      <h4>Web Development</h4>
-      <p>HTML, CSS, JavaScript, PHP, React, Node.js, Next.js</p>
-    </div>
-    <div class="skill-card">
-      <h4>Programming Languages</h4>
-      <p>Python, C, C++, Java</p>
-    </div>
-    <div class="skill-card">
-      <h4>Database & BI Tools</h4>
-      <p>SQL, Power BI</p>
-    </div>
-    <div class="skill-card">
-      <h4>Data Science</h4>
-      <p>Data Analysis using Python</p>
-    </div>
-  </div>
+<div class="social-icons">
+  <a href="https://linkedin.com/in/pranjali-19-rajguru" target="_blank"><i class="fab fa-linkedin"></i></a>
+  <a href="https://github.com/pranjalirajguru" target="_blank"><i class="fab fa-github"></i></a>
+  <a href="mailto:pranjalirajguru2003@gmail.com"><i class="fas fa-envelope"></i></a>
+  <a href="https://x.com/Pranjali192003" target="_blank"><i class="fab fa-x-twitter"></i></a>
 </div>
 
-     <!-- ✅ Projects -->
-<h3 class="section-heading">Projects</h3>
-<div class="projects-container">
-  <div class="projects-slider">
-    <button class="slider-btn left">&#10094;</button>
+<!-- ABOUT -->
+<section id="about">
+  <div class="about-left">
+    <h1>Pranjali Rajguru</h1>
+    <h2>Software Developer | Data Science Enthusiast | Full-Stack Developer</h2>
+    <p>I am a Computer Science student with a strong interest in software development, data science, and full-stack web applications. I enjoy building scalable solutions, analyzing data for insights, and developing user-focused applications. With hands-on experience in multiple technologies, I continuously work on real-world projects that combine problem-solving, clean architecture, and data-driven decision-making.</p>
+    <div class="education">
+  <h3>Education</h3>
+  <ul>
+    <li>
+      <strong>B.Sc Computer Science</strong><br>
+      Punyashlok Ahilyadevi Holkar Solapur University (2023–2026)
+    </li>
 
-    <div class="projects-cards" id="projectsContainer">
-      <div class="project-card">
-        <h4>Rhythm and Routine</h4>
-        <p>A self-care productivity timer app with aesthetic UI, task tracking, background music, and routine motivation.</p>
-        <a href="https://pranjalirajguru.github.io/rhythm-and-routine/" target="_blank">View Project</a>
-      </div>
-      <div class="project-card">
-        <h4>Squid Game Fan Site V1</h4>
-        <p>An interactive fan site for Squid Game, featuring character cards, game visuals, and themed UI elements.</p>
-        <a href="https://pranjalirajguru.github.io/Squid-Game-Fan-Site-V1.0/" target="_blank">View Project</a>
-      </div>
-       <div class="project-card">
-        <h4>Cuisine Classification </h4>
-        <p>A Machine Learning project that predicts a restaurant’s cuisine based on its details,built using Python.</p>
-        <a href="https://github.com/pranjalirajguru/Cuisine-Classification" target="_blank">View Repository</a>
-      </div>
-      <div class="project-card">
-        <h4>Restaurant Rating Predictor </h4>
-        <p>A ML project that predicts restaurant aggregate ratings based on inputs like country, location, average cost,table booking & online delivery.</p>
-        <a href="https://github.com/pranjalirajguru/Restaurant-Rating-Predictor" target="_blank">View Repository</a>
-      </div>
-      <div class="project-card">
-        <h4>Location Based Restaurant Analysis</h4>
-        <p>A ML project that Analyze and visualize restaurant distribution by city/locality using geospatial data.</p>
-        <a href="https://github.com/pranjalirajguru/Location-Based-Restaurant-Analysis" target="_blank">View Repository</a>
-      </div>
-      <div class="project-card">
-        <h4>SaaS Landing Page</h4>
-        <p>A sleek and responsive SaaS landing page built with Next.js, Tailwind CSS, showcasing modern UI components and branding.</p>
-        <a href="https://modernsa.netlify.app/" target="_blank">View Project</a>
-      </div>
-      <div class="project-card">
-        <h4>To-Do List</h4>
-        <p>A simple C++ console-based To-Do List app that lets you add, view, delete, and save tasks with persistent storage.</p>
-        <a href="https://github.com/pranjalirajguru/To-Do-List-" target="_blank">View Repository</a>
-      </div>
-      <div class="project-card">
-        <h4>Command-Line Address Book</h4>
-        <p>A C++ command-line Address Book that lets you manage contacts easily. You can add, search, view, and delete contacts using a simple menu.</p>
-        <a href="https://github.com/pranjalirajguru/Command-Line-Address-Book" target="_blank">View Repository</a>
-      </div>
-      <div class="project-card">
-        <h4>Simple Inventory System</h4>
-        <p>A basic inventory system in C++ using a linked list. Showcasing data structures and file handling concepts.</p>
-        <a href="https://github.com/pranjalirajguru/Simple-Inventory-System" target="_blank">View Repository</a>
-      </div>
-      <div class="project-card">
-        <h4>Calculator</h4>
-        <p>A stylish, responsive calculator with support for basic operations and modern CSS styling.</p>
-        <a href="https://pranjalirajguru.github.io/Calculator/" target="_blank">View Project</a>
-      </div>
-      <div class="project-card">
-        <h4>Currency Converter</h4>
-        <p>A PHP-based converter fetching real-time currency exchange rates, styled with minimal UI design.</p>
-        <a href="https://github.com/pranjalirajguru/Currency-converter-using-php" target="_blank">View Repository</a>
-      </div>
-       <div class="project-card">
-        <h4>Simple Text Editor</h4>
-        <p>This project is a console-based text editor built in C++.The editor demonstrates basic text manipulation, file I/O, and a menu-driven interface.</p>
-        <a href="https://github.com/pranjalirajguru/Simple-Text-Editor" target="_blank">View Repository</a>
-      </div>
-    </div>
+    <li>
+      <strong>HSC</strong><br>
+      Sangola Vidyamandir Jr. College (2020–2021)<br>
+    </li>
+  </ul>
 
-    <button class="slider-btn right">&#10095;</button>
-  </div>
+  <a href="images/Resume.pdf" download class="resume-btn">⬇ Download Resume</a>
 </div>
+  </div>
+  <div class="about-img">
+    <img src="images/pranjali.png" alt="Pranjali Rajguru" />
+  </div>
 </section>
-  <!-- ✅ Courses & Certification (Fixed) -->
-<section id="certs" class="page-section certifications-section">
-  <h2 class="section-title">Courses & Certifications</h2>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <h2 class="section-heading">Projects</h2>
+  <div class="projects-grid">
+
+    <div class="project-card">
+      <h4>Cuisine Classification</h4>
+      <p>A Machine Learning project that predicts a restaurant's cuisine based on its details, built using Python.</p>
+      <div class="tech-tags">
+        <span class="tag">Python</span><span class="tag">Scikit-learn</span><span class="tag">Pandas</span>
+      </div>
+      <a href="https://github.com/pranjalirajguru/Cuisine-Classification" target="_blank" class="project-link"><i class="fab fa-github" style="font-size:12px;"></i> View Repository</a>
+    </div>
+
+    <div class="project-card">
+      <h4>Rhythm and Routine</h4>
+      <p>A self-care productivity timer app with aesthetic UI, task tracking, background music, and routine motivation.</p>
+      <div class="tech-tags">
+        <span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">JavaScript</span>
+      </div>
+      <a href="https://pranjalirajguru.github.io/rhythm-and-routine/" target="_blank" class="project-link"><i class="fas fa-external-link-alt" style="font-size:11px;"></i> View Project</a>
+    </div>
+
+    <div class="project-card">
+      <h4>Squid Game Fan Site V1</h4>
+      <p>An interactive fan site for Squid Game, featuring character cards, game visuals, and themed UI elements.</p>
+      <div class="tech-tags">
+        <span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">JavaScript</span>
+      </div>
+      <a href="https://pranjalirajguru.github.io/Squid-Game-Fan-Site-V1.0/" target="_blank" class="project-link"><i class="fas fa-external-link-alt" style="font-size:11px;"></i> View Project</a>
+    </div>
+
+  
+    <div class="project-card">
+      <h4>Restaurant Rating Predictor</h4>
+      <p>A ML project that predicts restaurant aggregate ratings based on inputs like country, location, average cost, table booking & online delivery.</p>
+      <div class="tech-tags">
+        <span class="tag">Python</span><span class="tag">ML</span><span class="tag">Pandas</span><span class="tag">NumPy</span>
+      </div>
+      <a href="https://github.com/pranjalirajguru/Restaurant-Rating-Predictor" target="_blank" class="project-link"><i class="fab fa-github" style="font-size:12px;"></i> View Repository</a>
+    </div>
+
+    <div class="project-card">
+      <h4>Location Based Restaurant Analysis</h4>
+      <p>Analyze and visualize restaurant distribution by city/locality using geospatial data and mapping libraries.</p>
+      <div class="tech-tags">
+        <span class="tag">Python</span><span class="tag">Folium</span><span class="tag">Pandas</span><span class="tag">Matplotlib</span>
+      </div>
+      <a href="https://github.com/pranjalirajguru/Location-Based-Restaurant-Analysis" target="_blank" class="project-link"><i class="fab fa-github" style="font-size:12px;"></i> View Repository</a>
+    </div>
+
+    <div class="project-card">
+      <h4>SaaS Landing Page</h4>
+      <p>A sleek and responsive SaaS landing page showcasing modern UI components, branding, and smooth animations.</p>
+      <div class="tech-tags">
+        <span class="tag">Next.js</span><span class="tag">Tailwind CSS</span><span class="tag">React</span>
+      </div>
+      <a href="https://modernsa.netlify.app/" target="_blank" class="project-link"><i class="fas fa-external-link-alt" style="font-size:11px;"></i> View Project</a>
+    </div>
+
+    <div class="project-card">
+      <h4>To-Do List</h4>
+      <p>A console-based To-Do List app that lets you add, view, delete, and save tasks with persistent file storage.</p>
+      <div class="tech-tags">
+        <span class="tag">C++</span><span class="tag">File I/O</span>
+      </div>
+      <a href="https://github.com/pranjalirajguru/To-Do-List-" target="_blank" class="project-link"><i class="fab fa-github" style="font-size:12px;"></i> View Repository</a>
+    </div>
+
+    <div class="project-card">
+      <h4>Command-Line Address Book</h4>
+      <p>A C++ command-line Address Book to manage contacts — add, search, view, and delete using a simple menu.</p>
+      <div class="tech-tags">
+        <span class="tag">C++</span><span class="tag">OOP</span>
+      </div>
+      <a href="https://github.com/pranjalirajguru/Command-Line-Address-Book" target="_blank" class="project-link"><i class="fab fa-github" style="font-size:12px;"></i> View Repository</a>
+    </div>
+
+    <div class="project-card">
+      <h4>Simple Inventory System</h4>
+      <p>A basic inventory system in C++ using a linked list, showcasing data structures and file handling concepts.</p>
+      <div class="tech-tags">
+        <span class="tag">C++</span><span class="tag">Linked List</span><span class="tag">File I/O</span>
+      </div>
+      <a href="https://github.com/pranjalirajguru/Simple-Inventory-System" target="_blank" class="project-link"><i class="fab fa-github" style="font-size:12px;"></i> View Repository</a>
+    </div>
+
+    <div class="project-card">
+      <h4>Calculator</h4>
+      <p>A stylish, responsive calculator with support for basic operations and clean modern CSS styling.</p>
+      <div class="tech-tags">
+        <span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">JavaScript</span>
+      </div>
+      <a href="https://pranjalirajguru.github.io/Calculator/" target="_blank" class="project-link"><i class="fas fa-external-link-alt" style="font-size:11px;"></i> View Project</a>
+    </div>
+
+    <div class="project-card">
+      <h4>Currency Converter</h4>
+      <p>A PHP-based converter fetching real-time currency exchange rates, styled with minimal clean UI design.</p>
+      <div class="tech-tags">
+        <span class="tag">PHP</span><span class="tag">API</span><span class="tag">HTML/CSS</span>
+      </div>
+      <a href="https://github.com/pranjalirajguru/Currency-converter-using-php" target="_blank" class="project-link"><i class="fab fa-github" style="font-size:12px;"></i> View Repository</a>
+    </div>
+
+    <div class="project-card">
+      <h4>Simple Text Editor</h4>
+      <p>A console-based text editor in C++ demonstrating text manipulation, file I/O, and a menu-driven interface.</p>
+      <div class="tech-tags">
+        <span class="tag">C++</span><span class="tag">File I/O</span>
+      </div>
+      <a href="https://github.com/pranjalirajguru/Simple-Text-Editor" target="_blank" class="project-link"><i class="fab fa-github" style="font-size:12px;"></i> View Repository</a>
+    </div>
+
+  </div>
+</section>
+
+<!-- CERTIFICATIONS -->
+<section id="certs" style="min-height: auto; padding-bottom: 60px;">
+  <h2 class="section-heading">Courses & Certifications</h2>
   <div class="cert-slider-wrapper">
-  <button class="cert-scroll-btn left" onclick="scrollCerts(-1)">&#10094;</button>
-
-  <div class="cert-slider" id="certSlider">
-    <div class="cert-card"><img src="images/accenture.png" alt="Accenture Certificate"></div>
-    <div class="cert-card"><img src="images/python.jpeg" alt="Python Certificate"></div>
-    <div class="cert-card"><img src="images/microsoft.jpeg" alt="Microsoft Certificate"></div>
-    <div class="cert-card"><img src="images/deloitte.jpeg" alt="Deloitte Certificate"></div>
-    <div class="cert-card"><img src="images/forage.jpeg" alt="Forage Certificate"></div>
-    <div class="cert-card"><img src="images/ai.jpg" alt="ai Certificate"></div>
-    <div class="cert-card"><img src="images/datascientist.jpg" alt="ds Certificate"></div>
-    <div class="cert-card"><img src="images/reactjs.jpg" alt="react Certificate"></div>
-    <div class="cert-card"><img src="images/cyber.jpg" alt="cyber Certificate"></div>
-    <div class="cert-card"><img src="images/Java.jpg" alt="java Certificate"></div>
-    <div class="cert-card"><img src="images/PYML.jpg" alt="python Certificate"></div>
-    <div class="cert-card"><img src="images/cybersecurity.jpg" alt="Cybersecurity Certificate"></div>
-    <div class="cert-card"><img src="images/GenAI.jpg" alt="GENAI Certificate"></div>
-    <div class="cert-card"><img src="images/TCS.jpg" alt="TCS Certificate"></div>
-    <div class="cert-card"><img src="images/cloud.jpg" alt="cloud Certificate"></div>
-    <div class="cert-card"><img src="images/advanced.jpg" alt="advanced Certificate"></div>
-    <div class="cert-card"><img src="images/dl_ibm.jpg" alt="deep Certificate"></div>
-    <div class="cert-card"><img src="images/Developer.jpg" alt="dev Certificate"></div>
-    <div class="cert-card"><img src="images/python_ibm.jpg" alt="pyibm Certificate"></div>
-    <div class="cert-card"><img src="images/ML1.jpg" alt="ML Certificate"></div>
-    <div class="cert-card"><img src="images/sql.jpg" alt="Sql Certificate"></div>
-    <div class="cert-card"><img src="images/ML2.jpg" alt="ML2 Certificate"></div>
-    <div class="cert-card"><img src="images/cloudaws.jpg" alt="Cloud1 Certificate"></div>
-    <div class="cert-card"><img src="images/cloudasws2.jpg" alt="Cloud2 Certificate"></div>
-    <div class="cert-card"><img src="images/oracle.jpg" alt="Oracle Certificate"></div>
-    <div class="cert-card"><img src="images/mastercard.jpg" alt="Mastercard Certificate"></div>
-    <div class="cert-card"><img src="images/ux.jpg" alt="UX Certificate"></div>
-    <div class="cert-card"><img src="images/Microsoft1.jpg" alt="Microsoft1 Certificate"></div>
-    <div class="cert-card"><img src="images/Microsoft2.jpg" alt="Microsoft2 Certificate"></div>
-    <div class="cert-card"><img src="images/deloitteda.jpeg" alt="deloitteda Certificate"></div>
-    <div class="cert-card"><img src="images/900-exam.jpeg" alt="udemy Certificate"></div>
-    <div class="cert-card"><img src="images/azure.jpeg" alt="Microsoft3 Certificate"></div>
-    <div class="cert-card"><img src="images/azure-ai.jpeg" alt="Microsoft4 Certificate"></div>
+    <button class="cert-scroll-btn left" onclick="scrollCerts(-1)">&#10094;</button>
+    <div class="cert-slider" id="certSlider">
+      <div class="cert-card"><img src="images/accenture.png" alt="Accenture"></div>
+      <div class="cert-card"><img src="images/python.jpeg" alt="Python"></div>
+      <div class="cert-card"><img src="images/microsoft.jpeg" alt="Microsoft"></div>
+      <div class="cert-card"><img src="images/deloitte.jpeg" alt="Deloitte"></div>
+      <div class="cert-card"><img src="images/forage.jpeg" alt="Forage"></div>
+      <div class="cert-card"><img src="images/ai.jpg" alt="AI"></div>
+      <div class="cert-card"><img src="images/datascientist.jpg" alt="Data Science"></div>
+      <div class="cert-card"><img src="images/reactjs.jpg" alt="React"></div>
+      <div class="cert-card"><img src="images/cyber.jpg" alt="Cyber"></div>
+      <div class="cert-card"><img src="images/Java.jpg" alt="Java"></div>
+      <div class="cert-card"><img src="images/PYML.jpg" alt="Python ML"></div>
+      <div class="cert-card"><img src="images/cybersecurity.jpg" alt="Cybersecurity"></div>
+      <div class="cert-card"><img src="images/GenAI.jpg" alt="GenAI"></div>
+      <div class="cert-card"><img src="images/TCS.jpg" alt="TCS"></div>
+      <div class="cert-card"><img src="images/cloud.jpg" alt="Cloud"></div>
+      <div class="cert-card"><img src="images/advanced.jpg" alt="Advanced"></div>
+      <div class="cert-card"><img src="images/dl_ibm.jpg" alt="Deep Learning IBM"></div>
+      <div class="cert-card"><img src="images/Developer.jpg" alt="Developer"></div>
+      <div class="cert-card"><img src="images/python_ibm.jpg" alt="Python IBM"></div>
+      <div class="cert-card"><img src="images/ML1.jpg" alt="ML1"></div>
+      <div class="cert-card"><img src="images/sql.jpg" alt="SQL"></div>
+      <div class="cert-card"><img src="images/ML2.jpg" alt="ML2"></div>
+      <div class="cert-card"><img src="images/cloudaws.jpg" alt="AWS Cloud"></div>
+      <div class="cert-card"><img src="images/cloudasws2.jpg" alt="AWS Cloud 2"></div>
+      <div class="cert-card"><img src="images/oracle.jpg" alt="Oracle"></div>
+      <div class="cert-card"><img src="images/mastercard.jpg" alt="Mastercard"></div>
+      <div class="cert-card"><img src="images/ux.jpg" alt="UX"></div>
+      <div class="cert-card"><img src="images/Microsoft1.jpg" alt="Microsoft 1"></div>
+      <div class="cert-card"><img src="images/Microsoft2.jpg" alt="Microsoft 2"></div>
+      <div class="cert-card"><img src="images/deloitteda.jpeg" alt="Deloitte DA"></div>
+      <div class="cert-card"><img src="images/900-exam.jpeg" alt="Udemy"></div>
+      <div class="cert-card"><img src="images/azure.jpeg" alt="Azure"></div>
+      <div class="cert-card"><img src="images/azure-ai.jpeg" alt="Azure AI"></div>
+    </div>
+    <button class="cert-scroll-btn right" onclick="scrollCerts(1)">&#10095;</button>
   </div>
-
-  <button class="cert-scroll-btn right" onclick="scrollCerts(1)">&#10095;</button>
-</div>
-
 </section>
 
-  <!-- ✅ Contact Section -->
-  <section id="contact" class="page-section">
-    <div class="contact">     
-  <form class="contact-form" action="https://api.web3forms.com/submit" method="POST"+>
+<!-- CONTACT -->
+<section id="contact">
+  <form class="contact-form" action="https://api.web3forms.com/submit" method="POST">
     <h2>Contact Me</h2>
     <input type="hidden" name="access_key" value="9fec7eac-beb1-4390-99d6-90cb77909020">
     <label for="name">Name</label>
     <input type="text" id="name" name="name" required>
-
     <label for="email">Email</label>
     <input type="email" id="email" name="email" required>
-
-    <label for="message">Description</label>
+    <label for="message">Message</label>
     <textarea id="message" name="message" rows="5" required></textarea>
-
     <button type="submit">Send Message</button>
   </form>
-    </div>
-  </section>
+</section>
 
+<footer>
+  Pranjali Rajguru &nbsp;·&nbsp; Built with passion
+</footer>
 
-  <!-- ✅ JavaScript -->
-   <script>
-  function scrollCerts(direction) {
-    const container = document.getElementById('certSlider');
-    const cardWidth = container.querySelector('.cert-card').offsetWidth + 40; // 40px = gap
-    container.scrollBy({
-      left: direction * cardWidth,
-      behavior: 'smooth'
-    });
+<script>
+  function scrollCerts(dir) {
+    const el = document.getElementById('certSlider');
+    el.scrollBy({ left: dir * (300 + 36), behavior: 'smooth' });
   }
-       // ✅ Smooth scroll function
-const container = document.getElementById("projectsContainer");
-const scrollAmount = 280; // adjust per card width
 
-document.querySelector(".slider-btn.left").addEventListener("click", () => {
-  container.scrollBy({ left: -scrollAmount, behavior: "smooth" });
-});
-
-document.querySelector(".slider-btn.right").addEventListener("click", () => {
-  container.scrollBy({ left: scrollAmount, behavior: "smooth" });
-});
+  // Active nav highlight on scroll
+  const sections = document.querySelectorAll('section[id]');
+  const navLinks = document.querySelectorAll('nav a');
+  window.addEventListener('scroll', () => {
+    let current = '';
+    sections.forEach(s => {
+      if (window.scrollY >= s.offsetTop - 120) current = s.id;
+    });
+    navLinks.forEach(a => {
+      a.style.color = a.getAttribute('href') === '#' + current ? '#ffb3dd' : '#c9b8ff';
+    });
+  });
 </script>
-
-  <script src="js/script.js"></script>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
